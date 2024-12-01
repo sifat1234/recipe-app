@@ -30,14 +30,12 @@ export default function SingleCategoryRecipeDisplay({ id }) {
       </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-        {/* Loop through filterRecipes to display each recipe */}
         {filterRecipes.map((recipe, index) => (
           <div
             key={index}
             href={`/category/${recipe.category_id}/${recipe.title}`} // Link to the recipe page
             className='bg-white rounded-lg overflow-hidden shadow-md' // Apply styles directly to Link
           >
-            {/* Use next/image for optimized image rendering */}
             <Link href={`/category/${recipe.category_id}/${recipe.title}`}>
               <Image
                 src={getImageSrc(recipe.thumbnail)} // Reference from the `public` directory
