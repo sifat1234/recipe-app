@@ -10,6 +10,7 @@ function HandPickedCollections() {
 
   // Get two random objects (ensure recipeData has enough elements)
   const randomObjects = getRandomObjects(recipes);
+  console.log(randomObjects);
 
   return (
     <section id='handpick' className='mb-16'>
