@@ -1,46 +1,32 @@
-'use client';
+'use client'; // Error components must be Client Components
 
 import { useEffect } from 'react';
-import Link from 'next/link';
 
 export default function Error({ error, reset }) {
-  useEffect(() => {
-    // Automatically reset after 5 seconds
-    const timeout = setTimeout(() => {
-      reset();
-    }, 1000);
-
-    // Cleanup function to clear the timeout
-    return () => clearTimeout(timeout);
-  }, [reset]);
-
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
+  // Check if the error is a 404 error or any other condition that signifies "Not Found"
+  const isNotFound =
+    error?.status === 404 || error?.message?.includes('Not Found');
+
   return (
-    <section className='bg-white dark:bg-gray-900'>
-      <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
-        <div className='mx-auto max-w-screen-sm text-center'>
-          <h1 className='mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-primary-600 dark:text-primary-500'>
-            404
-          </h1>
-          <p className='mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white'>
-            Something's missing.
-          </p>
-          <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
-            Sorry, we can't find that page. You'll find lots to explore on the
-            home page.
-          </p>
-          <Link
-            href='/'
-            className='inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4'
-          >
-            Back to Homepage
-          </Link>
-        </div>
-      </div>
-    </section>
+    <div>
+      {isNotFound ? (
+        <>
+          <h2>Page Not Found</h2>
+          <p>The page you're looking for might not exist or has been moved.</p>
+          <button onClick={() => reset()}>Go back to Home</button>
+        </>
+      ) : (
+        <>
+          <h2>Something went wrong!</h2>
+          <h2>{error?.message}</h2>
+          <button onClick={() => reset()}>Try again</button>
+        </>
+      )}
+    </div>
   );
 }

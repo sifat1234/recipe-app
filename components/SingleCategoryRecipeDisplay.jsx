@@ -3,6 +3,7 @@ import Link from 'next/link';
 import categories from '@/data/categories.json';
 import recipes from '@/data/recipes.json';
 import { getImageSrc } from '@/util/imageUtils.js';
+import NotFound from './Home/NotFound';
 
 export default function SingleCategoryRecipeDisplay({ id }) {
   // Filter recipes based on category id
@@ -10,6 +11,10 @@ export default function SingleCategoryRecipeDisplay({ id }) {
 
   // Filter category name based on the provided id
   const filtercategoryname = categories.find((category) => category.id === id);
+
+  if (!filtercategoryname) {
+    return <NotFound />;
+  }
 
   return (
     <main className='container mx-auto px-4 py-8 mt-0'>
