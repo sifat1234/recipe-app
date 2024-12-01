@@ -1,9 +1,11 @@
 import Image from 'next/image';
-import Link from 'next/link'; // Import Link from Next.js
+import Link from 'next/link';
+import categories from '@/data/categories.json';
+import recipes from '@/data/recipes.json';
 
-function SuperDeliciousSection({ recipeData }) {
+function SuperDeliciousSection() {
   // Sort the recipes by rating count in descending order
-  const sortedRecipes = recipeData.sort(
+  const sortedRecipes = recipes.sort(
     (a, b) => b.rating.rating_count - a.rating.rating_count
   );
 

@@ -1,10 +1,8 @@
 import Image from 'next/image';
-import loadData from '@/util/getRecipeData';
-import async from './../app/page';
+import categories from '@/data/categories.json';
+import recipes from '@/data/recipes.json';
 
-export default async function SingleRecipeDisplay({ recipeName }) {
-  const { recipes, categories } = await loadData();
-
+export default function SingleRecipeDisplay({ recipeName }) {
   const decodedParam = decodeURIComponent(recipeName);
 
   const recipe = recipes.find(

@@ -1,7 +1,9 @@
 import Image from 'next/image';
-import Link from 'next/link'; // Import Link component from Next.js
+import Link from 'next/link';
+import categories from '@/data/categories.json';
+import recipes from '@/data/recipes.json';
 
-function AllCategories({ recipes, categories }) {
+function AllCategories() {
   // Function to get recipes per category
   function recipesPerCategory(recipes, categories) {
     const categoryCounts = {};

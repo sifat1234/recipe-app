@@ -1,11 +1,9 @@
-import loadData from '@/util/getRecipeData';
 import Image from 'next/image';
 import Link from 'next/link';
+import categories from '@/data/categories.json';
+import recipes from '@/data/recipes.json';
 
-export default async function SingleCategoryRecipeDisplay({ id }) {
-  // Load recipes and categories
-  const { recipes, categories } = await loadData();
-
+export default function SingleCategoryRecipeDisplay({ id }) {
   // Filter recipes based on category id
   const filterRecipes = recipes.filter((recipe) => recipe.category_id === id);
 

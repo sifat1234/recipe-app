@@ -1,10 +1,9 @@
-import loadData from '@/util/getRecipeData';
 import Link from 'next/link';
 import Image from 'next/image';
+import categories from '@/data/categories.json';
+import recipes from '@/data/recipes.json';
 
-export default async function YouMightAlsoLike({ recipeName }) {
-  const { recipes, categories } = await loadData();
-
+export default function YouMightAlsoLike({ recipeName }) {
   const decodedParam = decodeURIComponent(recipeName);
 
   //get the category id of the recipe

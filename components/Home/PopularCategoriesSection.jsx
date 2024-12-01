@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import categories from '@/data/categories.json';
+import recipes from '@/data/recipes.json';
 
-function PopularCategoriesSection({ categories, recipeData }) {
+function PopularCategoriesSection() {
   function countRecipesPerCategory(recipes, categories) {
     const categoryCounts = {};
 
@@ -29,7 +31,7 @@ function PopularCategoriesSection({ categories, recipeData }) {
     return sortedCategoryCounts;
   }
 
-  const data = countRecipesPerCategory(recipeData, categories);
+  const data = countRecipesPerCategory(recipes, categories);
   const firstSixData = data.slice(0, 6);
 
   return (

@@ -1,15 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import categories from '@/data/categories.json';
+import recipes from '@/data/recipes.json';
 
-export default function HeroSection({ recipeData }) {
-  console.log(recipeData);
+export default function HeroSection() {
   function getRandomObject(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
   }
 
   // Get a random recipe
-  const randomRecipe = getRandomObject(recipeData);
+  const randomRecipe = getRandomObject(recipes);
 
   return (
     <section className='mb-16 	 bg-orange-50'>

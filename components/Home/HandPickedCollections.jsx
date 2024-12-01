@@ -1,14 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import recipes from '@/data/recipes.json';
 
-function HandPickedCollections({ recipeData }) {
+function HandPickedCollections() {
   function getRandomObjects(array, count = 2) {
     const shuffled = [...array].sort(() => 0.5 - Math.random()); // Shuffle the array
     return shuffled.slice(0, Math.min(count, array.length)); // Ensure count doesn't exceed the array length
   }
 
   // Get two random objects (ensure recipeData has enough elements)
-  const randomObjects = getRandomObjects(recipeData);
+  const randomObjects = getRandomObjects(recipes);
 
   return (
     <section id='handpick' className='mb-16'>

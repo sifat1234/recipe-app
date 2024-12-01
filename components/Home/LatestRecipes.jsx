@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import categories from '@/data/categories.json';
+import recipes from '@/data/recipes.json';
 
-function LatestRecipes({ recipeData }) {
+function LatestRecipes() {
   // Function to get the latest 4 recipes
   const getLatestRecipes = (recipeData) => {
     return recipeData
@@ -10,7 +12,7 @@ function LatestRecipes({ recipeData }) {
   };
 
   // Fetch the latest recipes
-  const latestRecipes = getLatestRecipes(recipeData);
+  const latestRecipes = getLatestRecipes(recipes);
 
   return (
     <section id='latest-recipes' className='mb-16'>
