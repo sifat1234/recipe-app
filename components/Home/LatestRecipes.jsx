@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import categories from '@/data/categories.json';
 import recipes from '@/data/recipes.json';
+import { getImageSrc } from '@/util/imageUtils.js';
 
 function LatestRecipes() {
   // Function to get the latest 4 recipes
@@ -25,7 +26,7 @@ function LatestRecipes() {
           >
             <div className='cursor-pointer'>
               <Image
-                src={`/thumbs/${recipe.thumbnail}`} // Reference from the `public` directory
+                src={getImageSrc(recipe.thumbnail)} // Reference from the `public` directory
                 alt={recipe.title}
                 width={300}
                 height={300}

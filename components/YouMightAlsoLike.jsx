@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import categories from '@/data/categories.json';
 import recipes from '@/data/recipes.json';
+import { getImageSrc } from '@/util/imageUtils.js';
 
 export default function YouMightAlsoLike({ recipeName }) {
   const decodedParam = decodeURIComponent(recipeName);
@@ -30,7 +31,7 @@ export default function YouMightAlsoLike({ recipeName }) {
           <div key={index} className='relative'>
             <Link href={`/category/${findRecipeCategoryId}/${recipe.title}`}>
               <Image
-                src={`/thumbs/${recipe.thumbnail}`}
+                src={getImageSrc(recipe.thumbnail)}
                 alt={recipe.title}
                 width={300}
                 height={240}

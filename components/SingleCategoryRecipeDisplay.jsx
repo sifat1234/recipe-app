@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import categories from '@/data/categories.json';
 import recipes from '@/data/recipes.json';
+import { getImageSrc } from '@/util/imageUtils.js';
 
 export default function SingleCategoryRecipeDisplay({ id }) {
   // Filter recipes based on category id
@@ -39,7 +40,7 @@ export default function SingleCategoryRecipeDisplay({ id }) {
             {/* Use next/image for optimized image rendering */}
             <Link href={`/category/${recipe.category_id}/${recipe.title}`}>
               <Image
-                src={`/thumbs/${recipe.thumbnail}`}
+                src={getImageSrc(recipe.thumbnail)} // Reference from the `public` directory
                 alt={recipe.title}
                 width={1170}
                 height={1180}

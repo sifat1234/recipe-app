@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import recipes from '@/data/recipes.json';
+import { getImageSrc } from '@/util/imageUtils.js';
 
 function HandPickedCollections() {
   function getRandomObjects(array, count = 2) {
@@ -25,7 +26,7 @@ function HandPickedCollections() {
           >
             <Link href={`/category/${recipe.category_id}/${recipe.title}`}>
               <Image
-                src={`/thumbs/${recipe.thumbnail}`}
+                src={getImageSrc(recipe.thumbnail)}
                 alt={recipe.title}
                 width={600}
                 height={400}

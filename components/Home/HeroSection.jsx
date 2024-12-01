@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import categories from '@/data/categories.json';
 import recipes from '@/data/recipes.json';
+import { getImageSrc } from '@/util/imageUtils.js';
 
 export default function HeroSection() {
   function getRandomObject(arr) {
@@ -17,7 +18,7 @@ export default function HeroSection() {
       <div className='grid md:grid-cols-2 gap-8 items-center'>
         <div>
           <Image
-            src={`/thumbs/${randomRecipe.thumbnail}`} // Reference from the `public` directory
+            src={getImageSrc(randomRecipe.thumbnail)} // Reference from the `public` directory
             alt='Mighty Super Cheesecake'
             width={735}
             height={450}

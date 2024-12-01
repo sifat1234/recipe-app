@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import categories from '@/data/categories.json';
 import recipes from '@/data/recipes.json';
+import { getImageSrc } from '@/util/imageUtils.js';
 
 function SuperDeliciousSection() {
   // Sort the recipes by rating count in descending order
@@ -23,7 +24,7 @@ function SuperDeliciousSection() {
           >
             <div className='flex flex-col cursor-pointer'>
               <Image
-                src={`/thumbs/${recipe.thumbnail}`}
+                src={getImageSrc(recipe.thumbnail)}
                 alt={recipe.title}
                 className='w-full h-[300px] object-cover rounded-lg mb-4'
                 width={480}
